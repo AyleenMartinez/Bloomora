@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.devst.focusgarden"
+    namespace = "com.devst.bloomora"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.devst.focusgarden"
+        applicationId = "com.devst.bloomora"
         minSdk = 31
         targetSdk = 36
         versionCode = 1
