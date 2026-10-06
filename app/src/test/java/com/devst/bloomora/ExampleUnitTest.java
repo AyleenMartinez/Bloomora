@@ -1,4 +1,4 @@
-package com.devst.focusgarden;
+package com.devst.bloomora;
 
 import org.junit.Test;
 

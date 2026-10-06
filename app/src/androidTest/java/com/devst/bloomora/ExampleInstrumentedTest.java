@@ -1,4 +1,4 @@
-package com.devst.focusgarden;
+package com.devst.bloomora;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.devst.focusgarden", appContext.getPackageName());
+        assertEquals("com.devst.bloomora", appContext.getPackageName());
     }
 }

@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FocusGarden"
+rootProject.name = "Bloomora"
 include(":app")
