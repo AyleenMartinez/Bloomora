@@ -1,3 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Aplicación -->
     <string name="app_name">Bloomora</string>
+    <string name="eslogan_app">Cultiva tu concentración</string>
+    <string name="descripcion_logo">Logo de Bloomora</string>
+
+    <!-- Inicio -->
+    <string name="mi_jardin">Mi jardín</string>
+    <string name="tareas_activas">Tareas activas</string>
+
+    <!-- Tarea de ejemplo -->
+    <string name="asignatura_android">Programación Android</string>
+    <string name="prototipo_dos">Prototipo 2</string>
+    <string name="ver_detalle">Ver detalle</string>
+
+    <!-- Estados de tareas -->
+    <string name="estado_semilla">Semilla</string>
+    <string name="estado_creciendo">Creciendo</string>
+    <string name="estado_florecida">Florecida</string>
+
+    <!-- Resumen del jardín -->
+    <string name="semillas">Semillas</string>
+    <string name="creciendo">Creciendo</string>
+    <string name="florecidas">Florecidas</string>
+
+    <!-- Sesión de enfoque -->
+    <string name="sesion_enfoque">Sesión de enfoque</string>
+    <string name="duracion_enfoque">25 min</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="finalizar_sesion">Finalizar sesión</string>
+    <string name="sesion_en_curso">Sesión en curso</string>
+    <string name="sesion_completada">¡Sesión completada!</string>
+    <string name="jardin_creciendo">Tu jardín está creciendo</string>
+    <string name="temporizador_inicial">25:00</string>
+
+    <!-- Preparación -->
+    <string name="prepara_sesion">Prepara tu sesión</string>
+
+    <!-- Intents implícitos -->
+    <string name="lugar_estudio">Lugar de estudio</string>
+    <string name="material_estudio">Material</string>
+    <string name="registrar_evidencia">Evidencia</string>
+    <string name="configurar_bluetooth">Bluetooth</string>
+    <string name="agendar_sesion">Agendar</string>
+
+    <!-- Tareas -->
+    <string name="nueva_tarea">Nueva tarea</string>
+    <string name="nombre_tarea">Nombre de la tarea</string>
+    <string name="asignatura">Asignatura</string>
+    <string name="fecha">Fecha</string>
+    <string name="estado">Estado</string>
+
+    <!-- Mensajes -->
+    <string name="error_sin_aplicacion">No hay una aplicación compatible.</string>
+    <string name="error_datos_vacios">Completa los datos solicitados.</string>
+    <string name="evidencia_registrada">Evidencia registrada correctamente.</string>
 </resources>

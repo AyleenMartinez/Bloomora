@@ -1,2 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <!-- Logo -->
+    <dimen name="tamano_logo_pequeno">56dp</dimen>
+    <dimen name="tamano_logo">64dp</dimen>
+    <dimen name="tamano_logo_grande">72dp</dimen>
+
+    <!-- Espaciados -->
+    <dimen name="espaciado_extra_pequeno">4dp</dimen>
+    <dimen name="espaciado_pequeno">8dp</dimen>
+    <dimen name="espaciado_medio">16dp</dimen>
+    <dimen name="espaciado_grande">24dp</dimen>
+    <dimen name="espaciado_extra_grande">32dp</dimen>
+
+    <!-- Bordes -->
+    <dimen name="radio_borde_pequeno">12dp</dimen>
+    <dimen name="radio_borde_medio">18dp</dimen>
+    <dimen name="radio_borde_grande">24dp</dimen>
+
+    <!-- Tamaño de textos -->
+    <dimen name="texto_pequeno">12sp</dimen>
+    <dimen name="texto_normal">14sp</dimen>
+    <dimen name="texto_subtitulo">18sp</dimen>
+    <dimen name="texto_titulo">26sp</dimen>
+    <dimen name="texto_encabezado">30sp</dimen>
+
+    <!-- Componentes -->
+    <dimen name="alto_boton">52dp</dimen>
+    <dimen name="relleno_tarjeta">16dp</dimen>
+    <dimen name="margen_pantalla">20dp</dimen>
+
+</resources>
