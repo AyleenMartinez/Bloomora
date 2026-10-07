@@ -5,6 +5,27 @@
     <string name="eslogan_app">Cultiva tu concentración</string>
     <string name="descripcion_logo">Logo de Bloomora</string>
 
+    <!-- MAIN -->
+
+    <string name="saludo_usuario">Hola, Lala</string>
+    <string name="mensaje_inicio">Qué bueno verte por aquí. Hoy puedes avanzar a tu propio ritmo.</string>
+
+    <string name="descripcion_mascota">Mascota de Bloomora</string>
+    <string name="mensaje_mascota">No tienes que hacerlo todo hoy. Un pequeño avance también cuenta.</string>
+
+    <string name="resumen_dia">Tu día</string>
+    <string name="resumen_ejemplo">1 tarea pendiente · 25 min estudiados</string>
+
+    <string name="que_hacer">¿Qué quieres hacer?</string>
+
+    <string name="enfocarme">Enfocarme</string>
+    <string name="por_hacer">Por hacer</string>
+    <string name="calendario">Calendario</string>
+    <string name="personalizar">Personalizar</string>
+
+
+    <!-- SESION ENFOQUE  -->
+
     <!-- Inicio -->
     <string name="mi_jardin">Mi jardín</string>
     <string name="tareas_activas">Tareas activas</string>
