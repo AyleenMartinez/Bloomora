@@ -23,34 +23,12 @@
         <!-- Logo de Bloomora -->
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="@dimen/tamano_logo"
-            android:layout_height="@dimen/tamano_logo"
+            android:layout_width="@dimen/texto_encabezado"
+            android:layout_height="@dimen/texto_encabezado"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/descripcion_logo"
             android:src="@drawable/logo_bloomora" />
 
-        <!-- Nombre de la aplicación -->
-        <TextView
-            android:id="@+id/tvTituloBloomora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/espaciado_pequeno"
-            android:text="@string/app_name"
-            android:textColor="@color/verde_oscuro"
-            android:textSize="@dimen/texto_encabezado"
-            android:textStyle="bold" />
-
-        <!-- Eslogan -->
-        <TextView
-            android:id="@+id/tvEslogan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/espaciado_grande"
-            android:text="@string/eslogan_app"
-            android:textColor="@color/texto_secundario"
-            android:textSize="@dimen/texto_normal" />
 
         <!-- Tarea activa -->
         <LinearLayout
@@ -59,7 +37,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_tarjeta"
             android:orientation="vertical"
-            android:padding="@dimen/relleno_tarjeta">
+            android:padding="@dimen/relleno_tarjeta"
+            android:layout_marginTop="@dimen/espaciado_medio">
 
             <TextView
                 android:id="@+id/tvAsignatura"

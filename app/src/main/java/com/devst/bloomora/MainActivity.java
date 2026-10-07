@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnEnfocarme;
+    private Button btnPersonalizar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +23,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnEnfocarme = findViewById(R.id.btnEnfocarme);
+        btnPersonalizar = findViewById(R.id.btnPersonalizar);
+
 
         btnEnfocarme.setOnClickListener( view -> {
             Intent irAEnfoque = new Intent(MainActivity.this, SesionEnfoqueActivity.class);
             startActivity(irAEnfoque);
         });
+
+        btnPersonalizar.setOnClickListener(view -> {
+            Intent irAPersonalizacion = new Intent(MainActivity.this, PersonalizacionActivity.class);
+            startActivity(irAPersonalizacion);
+        });
+
+
 
     }
 }

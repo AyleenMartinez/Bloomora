@@ -23,6 +23,25 @@
     <string name="calendario">Calendario</string>
     <string name="personalizar">Personalizar</string>
 
+    <!-- Personalización -->
+    <string name="titulo_personalizacion">Haz Bloomora tuya</string>
+    <string name="subtitulo_personalizacion">Pequeños detalles para acompañarte mejor.</string>
+
+    <string name="como_llamarte">¿Cómo quieres que Bloomora te llame?</string>
+    <string name="pista_nombre">Tu nombre o apodo</string>
+
+    <string name="tiempo_enfoque">¿Cuánto quieres que dure tu sesión?</string>
+
+    <string name="guardar_personalizacion">Guardar cambios</string>
+    <string name="volver_inicio">Volver</string>
+
+    <!-- Duración -->
+    <string-array name="duraciones_enfoque">
+        <item>15 minutos</item>
+        <item>25 minutos</item>
+        <item>45 minutos</item>
+        <item>60 minutos</item>
+    </string-array>
 
     <!-- SESION ENFOQUE  -->
 
