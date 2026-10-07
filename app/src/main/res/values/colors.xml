@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Fondos -->
+    <color name="fondo_jardin">#F1F4EC</color>
+    <color name="superficie_jardin">#E5EDE1</color>
+
+    <!-- Verdes principales -->
+    <color name="verde_principal">#8FA98F</color>
+    <color name="verde_oscuro">#526B56</color>
+    <color name="verde_claro">#D5E3D2</color>
+    <color name="verde_suave">#EBF1E7</color>
+
+    <!-- Tonos secundarios -->
+    <color name="lavanda">#D8D0E8</color>
+    <color name="rosa_flor">#E7C7CF</color>
+    <color name="beige_semilla">#DED0A8</color>
+
+    <!-- Textos -->
+    <color name="texto_principal">#303832</color>
+    <color name="texto_secundario">#727972</color>
+
+    <!-- Estados -->
+    <color name="estado_exito">#6F9278</color>
+    <color name="estado_aviso">#C59A61</color>
+
+    <!-- Básicos -->
+    <color name="blanco">#FFFFFF</color>
+    <color name="negro">#000000</color>
 </resources>

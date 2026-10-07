@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloomora">
         <activity
+            android:name=".PersonalizacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SesionEnfoqueActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

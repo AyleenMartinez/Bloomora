@@ -1,19 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<!--
+    ARCHIVO: activity_main.xml
+    FUNCIÓN: Pantalla principal de bienvenida de Bloomora.
+    CONTIENE: Saludo personalizado, resumen del día y accesos principales.
+    ACTIVITY: MainActivity.java
+-->
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/fondo_jardin"
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:padding="@dimen/margen_pantalla">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/imgLogoInicio"
+            android:layout_width="@dimen/tamano_logo"
+            android:layout_height="@dimen/tamano_logo"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/descripcion_logo"
+            android:src="@drawable/logo_bloomora" />
+
+        <!-- Nombre -->
+        <TextView
+            android:id="@+id/tvTituloInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/espaciado_pequeno"
+            android:text="@string/app_name"
+            android:textColor="@color/verde_oscuro"
+            android:textSize="@dimen/texto_encabezado"
+            android:textStyle="bold" />
+
+        <!-- Saludo -->
+        <TextView
+            android:id="@+id/tvSaludo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/espaciado_grande"
+            android:text="@string/saludo_usuario"
+            android:textColor="@color/texto_principal"
+            android:textSize="@dimen/texto_subtitulo"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvMensajeInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_pequeno"
+            android:gravity="center"
+            android:text="@string/mensaje_inicio"
+            android:textColor="@color/texto_secundario"
+            android:textSize="@dimen/texto_normal" />
+
+        <!-- Mascota -->
+        <ImageView
+            android:id="@+id/imgMascota"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/espaciado_grande"
+            android:contentDescription="@string/descripcion_mascota"
+            android:src="@drawable/logo_bloomora" />
+
+        <!-- Mensaje de la mascota -->
+        <TextView
+            android:id="@+id/tvMensajeMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_medio"
+            android:background="@drawable/bg_tarjeta"
+            android:gravity="center"
+            android:padding="@dimen/relleno_tarjeta"
+            android:text="@string/mensaje_mascota"
+            android:textColor="@color/texto_principal"
+            android:textSize="@dimen/texto_normal" />
+
+        <!-- Resumen del día -->
+        <TextView
+            android:id="@+id/tvTituloResumen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_grande"
+            android:text="@string/resumen_dia"
+            android:textColor="@color/texto_principal"
+            android:textSize="@dimen/texto_subtitulo"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvResumen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_pequeno"
+            android:background="@drawable/bg_tarjeta"
+            android:gravity="center"
+            android:padding="@dimen/relleno_tarjeta"
+            android:text="@string/resumen_ejemplo"
+            android:textColor="@color/texto_secundario"
+            android:textSize="@dimen/texto_normal" />
+
+        <!-- Menú principal -->
+        <TextView
+            android:id="@+id/tvTituloMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_grande"
+            android:text="@string/que_hacer"
+            android:textColor="@color/texto_principal"
+            android:textSize="@dimen/texto_subtitulo"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_medio"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnJardin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/espaciado_pequeno"
+                android:layout_weight="1"
+                android:background="@drawable/bg_boton_secundario"
+                android:text="@string/mi_jardin"
+                android:textColor="@color/verde_oscuro"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEnfocarme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/espaciado_pequeno"
+                android:layout_weight="1"
+                android:background="@drawable/bg_boton_principal"
+                android:text="@string/enfocarme"
+                android:textColor="@color/blanco"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_pequeno"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPorHacer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/espaciado_pequeno"
+                android:layout_weight="1"
+                android:background="@drawable/bg_boton_secundario"
+                android:text="@string/por_hacer"
+                android:textColor="@color/verde_oscuro"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCalendario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/espaciado_pequeno"
+                android:layout_weight="1"
+                android:background="@drawable/bg_boton_secundario"
+                android:text="@string/calendario"
+                android:textColor="@color/verde_oscuro"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPersonalizar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_pequeno"
+            android:layout_marginBottom="@dimen/espaciado_grande"
+            android:background="@drawable/bg_boton_secundario"
+            android:text="@string/personalizar"
+            android:textColor="@color/verde_oscuro"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>
