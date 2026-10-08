@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/espaciado_grande"
-            android:text="@string/saludo_usuario"
+            android:text="@string/saludo_generico"
             android:textColor="@color/texto_principal"
             android:textSize="@dimen/texto_subtitulo"
             android:textStyle="bold" />

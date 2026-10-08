@@ -72,6 +72,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaciado_medio"
                 android:hint="@string/pista_nombre"
+                android:textColor="@color/texto_principal"
+                android:textColorHint="@color/texto_secundario"
+                android:backgroundTint="@color/verde_principal"
                 android:inputType="textPersonName"
                 android:maxLines="1" />
 
