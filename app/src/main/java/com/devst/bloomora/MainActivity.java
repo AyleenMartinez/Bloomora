@@ -1,19 +1,19 @@
 package com.devst.bloomora;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btnEnfocarme;
     private Button btnPersonalizar;
+    private TextView tvSaludo;
 
 
     @Override
@@ -24,9 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         btnEnfocarme = findViewById(R.id.btnEnfocarme);
         btnPersonalizar = findViewById(R.id.btnPersonalizar);
+        tvSaludo = findViewById(R.id.tvSaludo);
 
 
-        btnEnfocarme.setOnClickListener( view -> {
+        btnEnfocarme.setOnClickListener(view -> {
             Intent irAEnfoque = new Intent(MainActivity.this, SesionEnfoqueActivity.class);
             startActivity(irAEnfoque);
         });
@@ -36,7 +37,21 @@ public class MainActivity extends AppCompatActivity {
             startActivity(irAPersonalizacion);
         });
 
+    }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
+
+        String nombre = preferencias.getString("nombreUsuario", "");
+
+        if (nombre.isEmpty()) {
+            tvSaludo.setText(R.string.saludo_generico);
+        } else {
+            tvSaludo.setText(getString(R.string.saludo_personalizado, nombre));
+        }
     }
 }

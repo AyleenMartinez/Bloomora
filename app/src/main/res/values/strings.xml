@@ -23,6 +23,8 @@
     <string name="calendario">Calendario</string>
     <string name="personalizar">Personalizar</string>
 
+    <string name="formato_temporizador">%1$d:00</string>
+
     <!-- Personalización -->
     <string name="titulo_personalizacion">Haz Bloomora tuya</string>
     <string name="subtitulo_personalizacion">Pequeños detalles para acompañarte mejor.</string>
@@ -42,6 +44,11 @@
         <item>45 minutos</item>
         <item>60 minutos</item>
     </string-array>
+
+    <string name="saludo_personalizado">Hola, %1$s</string>
+    <string name="saludo_generico">Hola</string>
+    <string name="personalizacion_guardada">Cambios guardados</string>
+    <string name="error_nombre_vacio">Escribe un nombre o apodo</string>
 
     <!-- SESION ENFOQUE  -->
 
