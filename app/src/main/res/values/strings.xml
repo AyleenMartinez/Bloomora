@@ -106,4 +106,20 @@
     <string name="titulo_evento_calendario">Sesión de enfoque Bloomora</string>
     <string name="descripcion_evento_calendario">Tiempo reservado para una sesión de concentración.</string>
 
+
+
+
+    <string name="permiso_camara_denegado">Necesitas permitir el acceso a la cámara para registrar evidencia.</string>
+    <string name="explicacion_permiso_camara">Bloomora necesita acceso a la cámara para registrar tu evidencia de estudio.</string>
+
+    <!-- TEMPORIZADOR SERVICE -->
+    <string name="canal_enfoque">Sesiones de enfoque</string>
+    <string name="notificacion_enfoque_titulo">Sesión de enfoque en curso</string>
+    <string name="notificacion_enfoque_tiempo">Tiempo restante: %1$s</string>
+    <string name="formato_temporizador_segundos">%1$02d:%2$02d</string>
+    <string name="sesion_finalizada">¡Sesión completada!</string>
+    <string name="permiso_notificacion_denegado">Activa las notificaciones para ver el temporizador mientras estudias.</string>
+
+    <string name="temporizador_finalizado">00:00</string>
+
 </resources>

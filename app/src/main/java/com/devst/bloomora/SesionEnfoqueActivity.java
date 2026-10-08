@@ -19,6 +19,18 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.os.Build;
+
+
+
 public class SesionEnfoqueActivity extends AppCompatActivity {
 
     private TextView tvTemporizador;
@@ -27,10 +39,12 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
     private Button btnEvidencia;
     private Button btnBluetooth;
     private Button btnAgendarSesion;
+    private Button btnIniciarSesion;
 
     private Uri fotoUri;
 
-    private final ActivityResultLauncher<Intent> resultadoCamara = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), resultado -> {
+    private final ActivityResultLauncher<Intent>
+            resultadoCamara = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), resultado -> {
 
         if (resultado.getResultCode() == Activity.RESULT_OK) {
             Toast.makeText(this, R.string.foto_guardada, Toast.LENGTH_SHORT).show();
@@ -41,6 +55,44 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
                 getContentResolver().delete(fotoUri, null, null);
                 fotoUri = null;
             }
+        }
+    });
+    private final ActivityResultLauncher<String> permisoCamara = registerForActivityResult(new ActivityResultContracts.RequestPermission(), concedido -> {
+
+        if (concedido) {
+            abrirCamara();
+        } else {
+            Toast.makeText(this, R.string.permiso_camara_denegado, Toast.LENGTH_SHORT).show();
+        }
+    });
+
+    private final BroadcastReceiver receptorTemporizador = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            long segundosRestantes = intent.getLongExtra(TemporizadorService.EXTRA_SEGUNDOS, 0);
+
+            int minutos = (int) (segundosRestantes / 60);
+            int segundos = (int) (segundosRestantes % 60);
+
+            tvTemporizador.setText(getString(R.string.formato_temporizador_segundos, minutos, segundos));
+        }
+    };
+
+    private final BroadcastReceiver receptorSesionCompletada = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            tvTemporizador.setText(R.string.temporizador_finalizado);
+            Toast.makeText(SesionEnfoqueActivity.this, R.string.sesion_finalizada, Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private final ActivityResultLauncher<String> permisoNotificaciones = registerForActivityResult(new ActivityResultContracts.RequestPermission(), concedido -> {
+
+        if (concedido) {
+            iniciarTemporizador();
+        } else {
+            Toast.makeText(this, R.string.permiso_notificacion_denegado, Toast.LENGTH_SHORT).show();
         }
     });
 
@@ -57,6 +109,7 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         btnEvidencia = findViewById(R.id.btnEvidencia);
         btnBluetooth = findViewById(R.id.btnBluetooth);
         btnAgendarSesion = findViewById(R.id.btnAgendarSesion);
+        btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
 
         SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
 
@@ -96,31 +149,18 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         // Intent implícito #5: Cámara
         btnEvidencia.setOnClickListener(view -> {
 
-            ContentValues valoresFoto = new ContentValues();
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
 
-            valoresFoto.put(MediaStore.Images.Media.DISPLAY_NAME, "Bloomora_" + System.currentTimeMillis() + ".jpg");
-            valoresFoto.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+                abrirCamara();
 
-            fotoUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, valoresFoto);
+            } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
 
-            if (fotoUri != null) {
+                Toast.makeText(this, R.string.explicacion_permiso_camara, Toast.LENGTH_SHORT).show();
+                permisoCamara.launch(Manifest.permission.CAMERA);
 
-                Intent abrirCamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            } else {
 
-                abrirCamara.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
-                abrirCamara.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                abrirCamara.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-                try {
-                    resultadoCamara.launch(abrirCamara);
-
-                } catch (ActivityNotFoundException e) {
-
-                    getContentResolver().delete(fotoUri, null, null);
-                    fotoUri = null;
-
-                    Toast.makeText(this, R.string.error_sin_camara, Toast.LENGTH_SHORT).show();
-                }
+                permisoCamara.launch(Manifest.permission.CAMERA);
             }
         });
 
@@ -159,5 +199,78 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
             }
         });
 
+        btnIniciarSesion.setOnClickListener(view -> {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                    ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+
+                permisoNotificaciones.launch(Manifest.permission.POST_NOTIFICATIONS);
+
+            } else {
+                iniciarTemporizador();
+            }
+        });
+
     }
+
+    private void abrirCamara() {
+
+        ContentValues valoresFoto = new ContentValues();
+
+        valoresFoto.put(MediaStore.Images.Media.DISPLAY_NAME, "Bloomora_" + System.currentTimeMillis() + ".jpg");
+        valoresFoto.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+
+        fotoUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, valoresFoto);
+
+        if (fotoUri != null) {
+
+            Intent abrirCamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+            abrirCamara.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
+            abrirCamara.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            abrirCamara.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            try {
+                resultadoCamara.launch(abrirCamara);
+
+            } catch (ActivityNotFoundException e) {
+
+                getContentResolver().delete(fotoUri, null, null);
+                fotoUri = null;
+
+                Toast.makeText(this, R.string.error_sin_camara, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void iniciarTemporizador() {
+
+        SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
+        int duracion = preferencias.getInt("duracionEnfoque", 25);
+
+        Intent servicioTemporizador = new Intent(this, TemporizadorService.class);
+        servicioTemporizador.putExtra("duracion", duracion);
+
+        ContextCompat.startForegroundService(this, servicioTemporizador);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        IntentFilter filtroTemporizador = new IntentFilter(TemporizadorService.ACCION_ACTUALIZAR);
+        IntentFilter filtroCompletada = new IntentFilter(TemporizadorService.ACCION_COMPLETADA);
+
+        ContextCompat.registerReceiver(this, receptorTemporizador, filtroTemporizador, ContextCompat.RECEIVER_NOT_EXPORTED);
+        ContextCompat.registerReceiver(this, receptorSesionCompletada, filtroCompletada, ContextCompat.RECEIVER_NOT_EXPORTED);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        unregisterReceiver(receptorTemporizador);
+        unregisterReceiver(receptorSesionCompletada);
+    }
+
 }
