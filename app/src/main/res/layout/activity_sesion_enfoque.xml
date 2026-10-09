@@ -1,224 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    ARCHIVO: activity_sesion_enfoque.xml
-    FUNCIÓN: Pantalla para preparar y realizar una sesión de enfoque.
-    CONTIENE: Temporizador, tarea seleccionada y herramientas de estudio.
-    ACTIVITY: SesionEnfoqueActivity.java
--->
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo_jardin"
     android:fillViewport="true">
 
+    <!-- CONTENEDOR GENERAL SIN PADDING -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/margen_pantalla">
+        android:orientation="vertical">
 
-        <!-- Logo de Bloomora -->
+        <!-- CONTENIDO CON MÁRGENES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/margen_pantalla"
+            android:paddingEnd="@dimen/margen_pantalla">
+
+            <!-- Logo -->
+            <ImageView
+                android:layout_width="@dimen/tamano_logo"
+                android:layout_height="@dimen/tamano_logo"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margen_superior_logo"
+                android:contentDescription="@string/descripcion_logo"
+                android:src="@drawable/logo_bloomora" />
+
+            <!-- Tarea seleccionada -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:background="@drawable/bg_tarjeta"
+                android:orientation="vertical"
+                android:padding="@dimen/relleno_tarjeta">
+
+                <TextView
+                    android:id="@+id/tvAsignatura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sin_tarea_activa"
+                    android:textColor="@color/texto_principal"
+                    android:textSize="@dimen/texto_subtitulo"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTarea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_pequeno"
+                    android:text="@string/selecciona_tarea"
+                    android:textColor="@color/texto_secundario"
+                    android:textSize="@dimen/texto_normal" />
+
+                <TextView
+                    android:id="@+id/tvEstado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_pequeno"
+                    android:text="@string/sin_seleccionar"
+                    android:textColor="@color/verde_principal"
+                    android:textSize="@dimen/texto_normal"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnVerDetalle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_medio"
+                    android:background="@drawable/bg_boton_principal"
+                    android:text="@string/ver_detalle"
+                    android:textColor="@color/blanco"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <!-- Preparación de la sesión -->
+            <TextView
+                android:id="@+id/tvPrepararSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:text="@string/prepara_sesion"
+                android:textColor="@color/texto_principal"
+                android:textSize="@dimen/texto_subtitulo"
+                android:textStyle="bold" />
+
+            <!-- Lugar + Material -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_medio"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLugarEstudio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/espaciado_pequeno"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_boton_secundario"
+                    android:text="@string/lugar_estudio"
+                    android:textColor="@color/verde_oscuro"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnMaterialEstudio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espaciado_pequeno"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_boton_secundario"
+                    android:text="@string/material_estudio"
+                    android:textColor="@color/verde_oscuro"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <!-- Evidencia + Bluetooth -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_pequeno"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnEvidencia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/espaciado_pequeno"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_boton_secundario"
+                    android:text="@string/registrar_evidencia"
+                    android:textColor="@color/verde_oscuro"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnBluetooth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espaciado_pequeno"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_boton_secundario"
+                    android:text="@string/configurar_bluetooth"
+                    android:textColor="@color/verde_oscuro"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <!-- Agendar -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAgendarSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_pequeno"
+                android:background="@drawable/bg_boton_secundario"
+                android:text="@string/agendar_sesion"
+                android:textColor="@color/verde_oscuro"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+            <!-- Temporizador -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:background="@drawable/bg_tarjeta"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/relleno_tarjeta">
+
+                <TextView
+                    android:id="@+id/tvTituloSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sesion_enfoque"
+                    android:textColor="@color/texto_principal"
+                    android:textSize="@dimen/texto_subtitulo"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTemporizador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_medio"
+                    android:text="@string/temporizador_vacio"
+                    android:textColor="@color/verde_oscuro"
+                    android:textSize="48sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnIniciarSesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_medio"
+                    android:background="@drawable/bg_boton_principal"
+                    android:text="@string/iniciar_sesion"
+                    android:textColor="@color/blanco"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <!-- Volver -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVolver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:background="@drawable/bg_boton_secundario"
+                android:text="@string/volver"
+                android:textColor="@color/verde_oscuro"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+        <!-- PASTITO BLOOMORA -->
         <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="@dimen/texto_encabezado"
-            android:layout_height="@dimen/texto_encabezado"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/descripcion_logo"
-            android:src="@drawable/logo_bloomora" />
-
-
-        <!-- Tarea activa -->
-        <LinearLayout
-            android:id="@+id/contenedorTareaActiva"
+            android:id="@+id/imgPastoFooter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_tarjeta"
-            android:orientation="vertical"
-            android:padding="@dimen/relleno_tarjeta"
-            android:layout_marginTop="@dimen/espaciado_medio">
-
-            <!-- Tarea activa -->
-            <TextView
-                android:id="@+id/tvAsignatura"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/texto_principal"
-                android:textSize="@dimen/texto_subtitulo"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvTarea"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaciado_pequeno"
-                android:textColor="@color/texto_secundario"
-                android:textSize="@dimen/texto_normal" />
-
-            <TextView
-                android:id="@+id/tvEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaciado_pequeno"
-                android:textColor="@color/verde_principal"
-                android:textStyle="bold" />
-
-            <!-- Intent explícito #1: detalle de la tarea -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnVerDetalle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaciado_medio"
-                android:background="@drawable/bg_boton_principal"
-                android:text="@string/ver_detalle"
-                android:textColor="@color/blanco"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <!-- Sesión de enfoque -->
-        <LinearLayout
-            android:id="@+id/contenedorSesionEnfoque"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginTop="@dimen/espaciado_grande"
-            android:background="@drawable/bg_tarjeta"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="@dimen/relleno_tarjeta">
-
-            <TextView
-                android:id="@+id/tvTituloSesion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sesion_enfoque"
-                android:textColor="@color/texto_principal"
-                android:textSize="@dimen/texto_subtitulo"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvTemporizador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaciado_medio"
-                android:text="@string/temporizador_vacio"
-                android:textColor="@color/verde_oscuro"
-                android:textSize="@dimen/texto_encabezado"
-                android:textStyle="bold" />
-
-            <!-- Intent explícito #7: Service + Thread -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnIniciarSesion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaciado_medio"
-                android:background="@drawable/bg_boton_principal"
-                android:text="@string/iniciar_sesion"
-                android:textColor="@color/blanco"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <!-- Herramientas de preparación -->
-        <TextView
-            android:id="@+id/tvPrepararSesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_grande"
-            android:text="@string/prepara_sesion"
-            android:textColor="@color/texto_principal"
-            android:textSize="@dimen/texto_subtitulo"
-            android:textStyle="bold" />
-
-        <!-- Primera fila de herramientas -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_medio"
-            android:orientation="horizontal">
-
-            <!-- Intent implícito #1: Google Maps -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLugarEstudio"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/espaciado_pequeno"
-                android:layout_weight="1"
-                android:background="@drawable/bg_boton_secundario"
-                android:text="@string/lugar_estudio"
-                android:textColor="@color/verde_oscuro"
-                android:textStyle="bold"/>
-
-            <!-- Intent implícito #2: Web -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnMaterialEstudio"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/espaciado_pequeno"
-                android:layout_weight="1"
-                android:background="@drawable/bg_boton_secundario"
-                android:text="@string/material_estudio"
-                android:textColor="@color/verde_oscuro"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <!-- Segunda fila de herramientas -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_pequeno"
-            android:orientation="horizontal">
-
-            <!-- Intent implícito #5: Cámara -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnEvidencia"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/espaciado_pequeno"
-                android:layout_weight="1"
-                android:background="@drawable/bg_boton_secundario"
-                android:text="@string/registrar_evidencia"
-                android:textColor="@color/verde_oscuro"
-                android:textStyle="bold" />
-
-            <!-- Intent implícito #7: Bluetooth -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnBluetooth"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/espaciado_pequeno"
-                android:layout_weight="1"
-                android:background="@drawable/bg_boton_secundario"
-                android:text="@string/configurar_bluetooth"
-                android:textColor="@color/verde_oscuro"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <!-- Intent implícito #8: Calendario -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAgendarSesion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_pequeno"
-            android:layout_marginBottom="@dimen/espaciado_grande"
-            android:background="@drawable/bg_boton_secundario"
-            android:text="@string/agendar_sesion"
-            android:textColor="@color/verde_oscuro"
-            android:textStyle="bold"
-            />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnVolver"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_medio"
-            android:background="@drawable/bg_boton_secundario"
-            android:text="@string/volver"
-            android:textColor="@color/verde_oscuro"
-            android:textStyle="bold" />
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/pasto_footer" />
 
     </LinearLayout>
 

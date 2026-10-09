@@ -9,129 +9,163 @@
     android:background="@color/fondo_jardin"
     android:fillViewport="true">
 
+    <!-- CONTENEDOR GENERAL SIN PADDING -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/margen_pantalla">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="@dimen/tamano_logo"
-            android:layout_height="@dimen/tamano_logo"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/descripcion_logo"
-            android:src="@drawable/logo_bloomora" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/espaciado_medio"
-            android:text="@string/titulo_por_hacer"
-            android:textColor="@color/verde_oscuro"
-            android:textSize="@dimen/texto_encabezado"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/espaciado_pequeno"
-            android:gravity="center"
-            android:text="@string/subtitulo_por_hacer"
-            android:textColor="@color/texto_secundario" />
-
+        <!-- CONTENIDO CON MÁRGENES -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_grande"
-            android:background="@drawable/bg_tarjeta"
             android:orientation="vertical"
-            android:padding="@dimen/relleno_tarjeta">
+            android:paddingStart="@dimen/margen_pantalla"
+            android:paddingEnd="@dimen/margen_pantalla">
 
+            <!-- Logo -->
+            <ImageView
+                android:layout_width="@dimen/tamano_logo"
+                android:layout_height="@dimen/tamano_logo"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margen_superior_logo"
+                android:contentDescription="@string/descripcion_logo"
+                android:src="@drawable/logo_bloomora" />
+
+            <!-- Título -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/asignatura_tarea"
-                android:textColor="@color/texto_principal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/espaciado_medio"
+                android:text="@string/titulo_por_hacer"
+                android:textColor="@color/verde_oscuro"
+                android:textSize="@dimen/texto_encabezado"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etAsignatura"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/pista_asignatura"
-                android:inputType="textCapSentences"
-                android:textColor="@color/texto_principal"
-                android:textColorHint="@color/texto_secundario"
-                android:backgroundTint="@color/verde_principal" />
-
+            <!-- Subtítulo -->
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/espaciado_pequeno"
+                android:gravity="center"
+                android:text="@string/subtitulo_por_hacer"
+                android:textColor="@color/texto_secundario" />
+
+            <!-- Formulario -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:background="@drawable/bg_tarjeta"
+                android:orientation="vertical"
+                android:padding="@dimen/relleno_tarjeta">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/asignatura_tarea"
+                    android:textColor="@color/texto_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etAsignatura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/verde_principal"
+                    android:hint="@string/pista_asignatura"
+                    android:inputType="textCapSentences"
+                    android:textColor="@color/texto_principal"
+                    android:textColorHint="@color/texto_secundario" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_medio"
+                    android:text="@string/nombre_tarea"
+                    android:textColor="@color/texto_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etTarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/verde_principal"
+                    android:hint="@string/pista_tarea"
+                    android:inputType="textCapSentences"
+                    android:textColor="@color/texto_principal"
+                    android:textColorHint="@color/texto_secundario" />
+
+            </LinearLayout>
+
+            <!-- Guardar -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGuardarTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:background="@drawable/bg_boton_principal"
+                android:text="@string/guardar_tarea"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+            <!-- Mis semillas -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:text="@string/mis_semillas"
+                android:textColor="@color/texto_principal"
+                android:textSize="@dimen/texto_subtitulo"
+                android:textStyle="bold" />
+
+            <!-- Sin tareas -->
+            <TextView
+                android:id="@+id/tvSinTareas"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaciado_medio"
-                android:text="@string/nombre_tarea"
-                android:textColor="@color/texto_principal"
-                android:textStyle="bold" />
+                android:gravity="center"
+                android:text="@string/sin_tareas"
+                android:textColor="@color/texto_secundario" />
 
-            <EditText
-                android:id="@+id/etTarea"
+            <!-- Lista de tareas -->
+            <LinearLayout
+                android:id="@+id/contenedorTareas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/pista_tarea"
-                android:inputType="textCapSentences"
-                android:textColor="@color/texto_principal"
-                android:textColorHint="@color/texto_secundario"
-                android:backgroundTint="@color/verde_principal" />
+                android:orientation="vertical" />
 
-
+            <!-- Volver -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVolver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_medio"
+                android:background="@drawable/bg_boton_secundario"
+                android:text="@string/volver"
+                android:textColor="@color/verde_oscuro"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
 
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnGuardarTarea"
+        <!-- ESPACIO FLEXIBLE -->
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_grande"
-            android:background="@drawable/bg_boton_principal"
-            android:text="@string/guardar_tarea"
-            android:textStyle="bold"
-            app:backgroundTint="@null" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_grande"
-            android:text="@string/mis_semillas"
-            android:textColor="@color/texto_principal"
-            android:textSize="@dimen/texto_subtitulo"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvSinTareas"
+        <!-- PASTITO BLOOMORA -->
+        <ImageView
+            android:id="@+id/imgPastoFooter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_medio"
-            android:gravity="center"
-            android:text="@string/sin_tareas"
-            android:textColor="@color/texto_secundario" />
-
-        <LinearLayout
-            android:id="@+id/contenedorTareas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnVolver"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_medio"
-            android:background="@drawable/bg_boton_secundario"
-            android:text="@string/volver"
-            android:textColor="@color/verde_oscuro"
-            android:textStyle="bold"
-            app:backgroundTint="@null" />
+            android:layout_height="70dp"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/pasto_footer" />
 
     </LinearLayout>
 

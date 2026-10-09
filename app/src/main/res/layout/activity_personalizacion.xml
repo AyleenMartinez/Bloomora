@@ -15,111 +15,137 @@
     android:background="@color/fondo_jardin"
     android:fillViewport="true">
 
+    <!-- CONTENEDOR GENERAL SIN PADDING -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/margen_pantalla">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <!-- Logo -->
-        <ImageView
-            android:layout_width="@dimen/tamano_logo"
-            android:layout_height="@dimen/tamano_logo"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/descripcion_logo"
-            android:src="@drawable/logo_bloomora" />
-
-        <!-- Título -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/espaciado_medio"
-            android:text="@string/titulo_personalizacion"
-            android:textColor="@color/verde_oscuro"
-            android:textSize="@dimen/texto_titulo"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_pequeno"
-            android:gravity="center"
-            android:text="@string/subtitulo_personalizacion"
-            android:textColor="@color/texto_secundario"
-            android:textSize="@dimen/texto_normal" />
-
-        <!-- Datos de personalización -->
+        <!-- CONTENIDO CON MÁRGENES -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_grande"
-            android:background="@drawable/bg_tarjeta"
             android:orientation="vertical"
-            android:padding="@dimen/relleno_tarjeta">
+            android:paddingStart="@dimen/margen_pantalla"
+            android:paddingEnd="@dimen/margen_pantalla">
 
+            <!-- Logo -->
+            <ImageView
+                android:layout_width="@dimen/tamano_logo"
+                android:layout_height="@dimen/tamano_logo"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margen_superior_logo"
+                android:contentDescription="@string/descripcion_logo"
+                android:src="@drawable/logo_bloomora" />
+
+            <!-- Título -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/como_llamarte"
-                android:textColor="@color/texto_principal"
-                android:textSize="@dimen/texto_subtitulo"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/espaciado_medio"
+                android:text="@string/titulo_personalizacion"
+                android:textColor="@color/verde_oscuro"
+                android:textSize="@dimen/texto_titulo"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etNombreUsuario"
+            <!-- Subtítulo -->
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaciado_medio"
-                android:hint="@string/pista_nombre"
-                android:textColor="@color/texto_principal"
-                android:textColorHint="@color/texto_secundario"
-                android:backgroundTint="@color/verde_principal"
-                android:inputType="textPersonName"
-                android:maxLines="1" />
+                android:layout_marginTop="@dimen/espaciado_pequeno"
+                android:gravity="center"
+                android:text="@string/subtitulo_personalizacion"
+                android:textColor="@color/texto_secundario"
+                android:textSize="@dimen/texto_normal" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Datos de personalización -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaciado_grande"
-                android:text="@string/tiempo_enfoque"
-                android:textColor="@color/texto_principal"
-                android:textSize="@dimen/texto_subtitulo"
-                android:textStyle="bold" />
+                android:background="@drawable/bg_tarjeta"
+                android:orientation="vertical"
+                android:padding="@dimen/relleno_tarjeta">
 
-            <Spinner
-                android:id="@+id/spDuracion"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/como_llamarte"
+                    android:textColor="@color/texto_principal"
+                    android:textSize="@dimen/texto_subtitulo"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etNombreUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_medio"
+                    android:backgroundTint="@color/verde_principal"
+                    android:hint="@string/pista_nombre"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:textColor="@color/texto_principal"
+                    android:textColorHint="@color/texto_secundario" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_grande"
+                    android:text="@string/tiempo_enfoque"
+                    android:textColor="@color/texto_principal"
+                    android:textSize="@dimen/texto_subtitulo"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spDuracion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/espaciado_medio"
+                    android:entries="@array/duraciones_enfoque" />
+
+            </LinearLayout>
+
+            <!-- Guardar -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGuardarPersonalizacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaciado_medio"
-                android:entries="@array/duraciones_enfoque" />
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:background="@drawable/bg_boton_principal"
+                android:text="@string/guardar_personalizacion"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+            <!-- Volver -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVolver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_pequeno"
+                android:background="@drawable/bg_boton_secundario"
+                android:text="@string/volver"
+                android:textColor="@color/verde_oscuro"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
 
         </LinearLayout>
 
-        <!-- Guardar -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnGuardarPersonalizacion"
+        <!-- ESPACIO FLEXIBLE -->
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_grande"
-            android:background="@drawable/bg_boton_principal"
-            android:text="@string/guardar_personalizacion"
-            android:textColor="@color/blanco"
-            android:textStyle="bold"
-            app:backgroundTint="@null" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <!-- Volver -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnVolver"
+        <!-- PASTITO BLOOMORA -->
+        <ImageView
+            android:id="@+id/imgPastoFooter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/espaciado_pequeno"
-            android:layout_marginBottom="@dimen/espaciado_grande"
-            android:background="@drawable/bg_boton_secundario"
-            android:text="@string/volver"
-            android:textColor="@color/verde_oscuro"
-            android:textStyle="bold"
-            app:backgroundTint="@null" />
+            android:layout_height="70dp"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/pasto_footer" />
 
     </LinearLayout>
 

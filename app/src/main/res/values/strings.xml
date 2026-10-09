@@ -19,19 +19,9 @@
     <string name="saludo_personalizado">Hola, %1$s</string>
 
     <string name="mensaje_inicio">Qué bueno verte por aquí. Hoy puedes avanzar a tu propio ritmo.</string>
-    <string name="descripcion_mascota">Mascota de Bloomora</string>
-    <string name="mensaje_mascota">No tienes que hacerlo todo hoy. Un pequeño avance también cuenta.</string>
 
-    <string name="resumen_dia">Tu día</string>
-    <string name="resumen_sin_tarea">Aún no tienes una semilla activa.</string>
-    <string name="resumen_tarea_activa">1 tarea activa · %1$s</string>
-
-    <string name="que_hacer">¿Qué quieres hacer?</string>
     <string name="mi_jardin">Mi jardín</string>
     <string name="enfocarme">Enfocarme</string>
-    <string name="por_hacer">Por hacer</string>
-    <string name="calendario">Ver calendario</string>
-    <string name="personalizar">Personalizar</string>
 
 
     <!-- ================================================= -->
@@ -75,11 +65,6 @@
 
     <string name="estado_tarea">Estado</string>
 
-    <string-array name="estados_tarea">
-        <item>Semilla</item>
-        <item>Creciendo</item>
-        <item>Florecida</item>
-    </string-array>
 
     <string name="guardar_tarea">GUARDAR TAREA</string>
     <string name="tarea_guardada">Tarea guardada correctamente.</string>
@@ -92,11 +77,11 @@
     <!-- SESIÓN DE ENFOQUE -->
     <!-- ================================================= -->
 
-    <string name="ver_detalle">Ver detalle</string>
+    <string name="ver_detalle">VER DETALLE</string>
 
     <string name="sesion_enfoque">Sesión de enfoque</string>
     <string name="iniciar_sesion">INICIAR SESIÓN</string>
-    <string name="detener_sesion">DETENER SESIÓN</string>
+    <string name="detener_sesion">Detener sesión</string>
 
     <string name="temporizador_vacio">00:00</string>
     <string name="temporizador_finalizado">00:00</string>
@@ -108,7 +93,8 @@
     <string name="material_estudio">Material</string>
     <string name="registrar_evidencia">Evidencia</string>
     <string name="configurar_bluetooth">Bluetooth</string>
-    <string name="agendar_sesion">Agendar</string>
+    <string name="agendar_sesion">Agendar enfoque</string>
+
 
 
     <!-- ================================================= -->
@@ -163,18 +149,27 @@
 
     <string name="mis_semillas">Mis semillas</string>
     <string name="sin_tareas">Aún no tienes tareas guardadas.</string>
-    <string name="agregar_tarea">AGREGAR TAREA</string>
     <string name="usar_para_enfocarme">USAR PARA ENFOCARME</string>
     <string name="tarea_activa">TAREA ACTIVA</string>
     <string name="tarea_seleccionada">Tarea seleccionada para tu próxima sesión.</string>
 
     <string name="sin_tarea_activa">Sin tarea activa</string>
-    <string name="selecciona_tarea">Selecciona una tarea en Por hacer</string>
+    <string name="selecciona_tarea">Selecciona una tarea en Mis tareas</string>
     <string name="sin_seleccionar">Sin seleccionar</string>
 
     <string name="titulo_mi_jardin">Mi jardín</string>
     <string name="subtitulo_mi_jardin">Aquí florecen tus tareas completadas.</string>
     <string name="sin_flores">Aún no tienes tareas florecidas.</string>
+
+    <string name="explorar">Explorar</string>
+
+
+    <string name="ajustes">Personalizar Bloomora</string>
+    <string name="mis_tareas">Mis tareas</string>
+    <string name="agenda_enfoques">Agenda</string>
+    <string name="frase_bloomora">No tienes que hacerlo todo hoy. Un pequeño avance también cuenta.</string>
+
+    <string name="mascota">🌱</string>
 
 
 </resources>

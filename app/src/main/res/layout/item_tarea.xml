@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/espaciado_pequeno"
         android:textColor="@color/verde_principal"
+        android:textSize="@dimen/texto_normal"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
