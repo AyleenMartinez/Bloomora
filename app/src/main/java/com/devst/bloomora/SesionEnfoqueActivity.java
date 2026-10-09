@@ -36,6 +36,9 @@ import androidx.appcompat.app.AlertDialog;
 public class SesionEnfoqueActivity extends AppCompatActivity {
 
     private TextView tvTemporizador;
+    private TextView tvAsignatura;
+    private TextView tvTarea;
+    private TextView tvEstado;
     private Button btnLugarEstudio;
     private Button btnMaterialEstudio;
     private Button btnEvidencia;
@@ -43,6 +46,7 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
     private Button btnAgendarSesion;
     private Button btnIniciarSesion;
     private Button btnVerDetalle;
+    private Button btnVolver;
 
     private Uri fotoUri;
 
@@ -115,13 +119,23 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         btnAgendarSesion = findViewById(R.id.btnAgendarSesion);
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
         btnVerDetalle = findViewById(R.id.btnVerDetalle);
+        btnVolver = findViewById(R.id.btnVolver);
+        tvAsignatura = findViewById(R.id.tvAsignatura);
+        tvTarea = findViewById(R.id.tvTarea);
+        tvEstado = findViewById(R.id.tvEstado);
+
+        btnVolver.setOnClickListener(view ->
+                finish()
+        );
 
 
         SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
+        int duracionSegundos = preferencias.getInt("duracionSegundos", 25 * 60);
 
-        int duracion = preferencias.getInt("duracionEnfoque", 25);
+        int minutos = duracionSegundos / 60;
+        int segundos = duracionSegundos % 60;
 
-        tvTemporizador.setText(getString(R.string.formato_temporizador, duracion));
+        tvTemporizador.setText(getString(R.string.formato_temporizador_segundos, minutos, segundos));
 
 
         // Intent implícito #1: Google Maps
@@ -188,7 +202,7 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         btnAgendarSesion.setOnClickListener(view -> {
 
             long inicio = System.currentTimeMillis() + (5 * 60 * 1000);
-            long fin = inicio + (duracion * 60L * 1000L);
+            long fin = inicio + (duracionSegundos * 60L * 1000L);
 
             Intent agendarSesion = new Intent(Intent.ACTION_INSERT);
 
@@ -227,13 +241,32 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
 
             Intent irADetalleTarea = new Intent(SesionEnfoqueActivity.this, DetalleTareaActivity.class);
 
-            irADetalleTarea.putExtra("asignatura", "Programación Android");
-            irADetalleTarea.putExtra("tarea", "Prototipo 2");
-            irADetalleTarea.putExtra("estado", "Creciendo");
+            irADetalleTarea.putExtra("asignatura", tvAsignatura.getText().toString());
+            irADetalleTarea.putExtra("tarea", tvTarea.getText().toString());
+            irADetalleTarea.putExtra("estado", tvEstado.getText().toString());
 
             startActivity(irADetalleTarea);
         });
 
+    }
+
+    private void cargarTarea() {
+
+        SharedPreferences tareas = getSharedPreferences("tareasBloomora", MODE_PRIVATE);
+
+        String asignatura = tareas.getString("asignaturaTarea", "Sin asignatura");
+        String tarea = tareas.getString("nombreTarea", "Aún no tienes una tarea");
+        String estado = tareas.getString("estadoTarea", "Semilla");
+
+        tvAsignatura.setText(asignatura);
+        tvTarea.setText(tarea);
+        tvEstado.setText(estado);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarTarea();
     }
 
     private void abrirCamara() {
@@ -264,15 +297,19 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.error_sin_camara, Toast.LENGTH_SHORT).show();
             }
         }
+        else {
+            Toast.makeText(this, R.string.error_guardar_foto, Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void iniciarTemporizador() {
 
         SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
-        int duracion = preferencias.getInt("duracionEnfoque", 25);
+        int duracionSegundos = preferencias.getInt("duracionSegundos", 25 * 60);
 
         Intent servicioTemporizador = new Intent(this, TemporizadorService.class);
-        servicioTemporizador.putExtra("duracion", duracion);
+        servicioTemporizador.putExtra("duracionSegundos", duracionSegundos);
 
         ContextCompat.startForegroundService(this, servicioTemporizador);
 

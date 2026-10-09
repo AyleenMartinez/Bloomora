@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnEnfocarme;
     private Button btnPersonalizar;
     private TextView tvSaludo;
+    private Button btnPorHacer;
 
 
     @Override
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnEnfocarme = findViewById(R.id.btnEnfocarme);
         btnPersonalizar = findViewById(R.id.btnPersonalizar);
         tvSaludo = findViewById(R.id.tvSaludo);
+        btnPorHacer = findViewById(R.id.btnPorHacer);
 
 
         btnEnfocarme.setOnClickListener(view -> {
@@ -35,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         btnPersonalizar.setOnClickListener(view -> {
             Intent irAPersonalizacion = new Intent(MainActivity.this, PersonalizacionActivity.class);
             startActivity(irAPersonalizacion);
+        });
+
+        btnPorHacer.setOnClickListener(view -> {
+
+            Intent irAPorHacer = new Intent(MainActivity.this, PorHacerActivity.class);
+            startActivity(irAPorHacer);
         });
 
     }

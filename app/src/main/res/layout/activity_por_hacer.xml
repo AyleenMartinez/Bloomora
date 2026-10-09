@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_jardin"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margen_pantalla">
+
+        <ImageView
+            android:layout_width="@dimen/tamano_logo"
+            android:layout_height="@dimen/tamano_logo"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/descripcion_logo"
+            android:src="@drawable/logo_bloomora" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/espaciado_medio"
+            android:text="@string/titulo_por_hacer"
+            android:textColor="@color/verde_oscuro"
+            android:textSize="@dimen/texto_encabezado"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/espaciado_pequeno"
+            android:gravity="center"
+            android:text="@string/subtitulo_por_hacer"
+            android:textColor="@color/texto_secundario" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_grande"
+            android:background="@drawable/bg_tarjeta"
+            android:orientation="vertical"
+            android:padding="@dimen/relleno_tarjeta">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asignatura_tarea"
+                android:textColor="@color/texto_principal"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etAsignatura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/pista_asignatura"
+                android:inputType="textCapSentences"
+                android:textColor="@color/texto_principal"
+                android:textColorHint="@color/texto_secundario"
+                android:backgroundTint="@color/verde_principal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_medio"
+                android:text="@string/nombre_tarea"
+                android:textColor="@color/texto_principal"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/pista_tarea"
+                android:inputType="textCapSentences"
+                android:textColor="@color/texto_principal"
+                android:textColorHint="@color/texto_secundario"
+                android:backgroundTint="@color/verde_principal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_medio"
+                android:text="@string/estado_tarea"
+                android:textColor="@color/texto_principal"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spEstadoTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/estados_tarea" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGuardarTarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_grande"
+            android:background="@drawable/bg_boton_principal"
+            android:text="@string/guardar_tarea"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_medio"
+            android:background="@drawable/bg_boton_secundario"
+            android:text="@string/volver"
+            android:textColor="@color/verde_oscuro"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+    </LinearLayout>
+
+</ScrollView>

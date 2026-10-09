@@ -54,6 +54,7 @@
     <string name="tiempo_enfoque">¿Cuánto quieres que dure tu sesión?</string>
 
     <string-array name="duraciones_enfoque">
+        <item>15 segundos (DEMO)</item>
         <item>15 minutos</item>
         <item>25 minutos</item>
         <item>45 minutos</item>
@@ -134,5 +135,30 @@
     <string name="detalle_tarea">Tarea</string>
     <string name="detalle_estado">Estado</string>
     <string name="volver">VOLVER</string>
+
+    <string name="error_datos_tarea">No se pudieron cargar los datos de la tarea.</string>
+
+    <string name="error_guardar_foto">No se pudo preparar el archivo para la fotografía.</string>
+
+    <!-- POR HACER -->
+    <string name="titulo_por_hacer">Tu próxima semilla</string>
+    <string name="subtitulo_por_hacer">Guarda una tarea para enfocarte en ella.</string>
+    <string name="asignatura_tarea">Asignatura</string>
+    <string name="pista_asignatura">Ej: Programación Android</string>
+    <string name="nombre_tarea">Tarea</string>
+    <string name="pista_tarea">Ej: Prototipo 2</string>
+    <string name="estado_tarea">Estado</string>
+    <string name="guardar_tarea">GUARDAR TAREA</string>
+    <string name="tarea_guardada">Tarea guardada correctamente.</string>
+    <string name="error_asignatura_vacia">Ingresa una asignatura.</string>
+    <string name="error_tarea_vacia">Ingresa una tarea.</string>
+
+    <string-array name="estados_tarea">
+        <item>Semilla</item>
+        <item>Creciendo</item>
+        <item>Florecida</item>
+    </string-array>
+
+    <string name="temporizador_vacio">00:00</string>
 
 </resources>

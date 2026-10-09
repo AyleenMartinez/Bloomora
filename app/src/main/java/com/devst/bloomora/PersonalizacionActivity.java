@@ -30,20 +30,12 @@ public class PersonalizacionActivity extends AppCompatActivity {
         btnGuardarPersonalizacion = findViewById(R.id.btnGuardarPersonalizacion);
         btnVolver = findViewById(R.id.btnVolver);
 
-        preferencias = getSharedPreferences(
-                "preferenciasBloomora",
-                MODE_PRIVATE
-        );
+        preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
 
         cargarPreferencias();
 
-        btnGuardarPersonalizacion.setOnClickListener(view -> {
-            guardarPreferencias();
-        });
-
-        btnVolver.setOnClickListener(view -> {
-            finish();
-        });
+        btnGuardarPersonalizacion.setOnClickListener(view -> guardarPreferencias());
+        btnVolver.setOnClickListener(view -> finish());
     }
 
     private void guardarPreferencias() {
@@ -51,69 +43,57 @@ public class PersonalizacionActivity extends AppCompatActivity {
         String nombre = etNombreUsuario.getText().toString().trim();
 
         if (nombre.isEmpty()) {
-            etNombreUsuario.setError(
-                    getString(R.string.error_nombre_vacio)
-            );
+            etNombreUsuario.setError(getString(R.string.error_nombre_vacio));
             return;
         }
 
-        int duracion;
+        int duracionSegundos;
 
         switch (spDuracion.getSelectedItemPosition()) {
-
             case 0:
-                duracion = 15;
+                duracionSegundos = 15;
                 break;
-
             case 1:
-                duracion = 25;
+                duracionSegundos = 15 * 60;
                 break;
-
             case 2:
-                duracion = 45;
+                duracionSegundos = 25 * 60;
                 break;
-
+            case 3:
+                duracionSegundos = 45 * 60;
+                break;
             default:
-                duracion = 60;
+                duracionSegundos = 60 * 60;
                 break;
         }
 
         SharedPreferences.Editor editor = preferencias.edit();
-
         editor.putString("nombreUsuario", nombre);
-        editor.putInt("duracionEnfoque", duracion);
+        editor.putInt("duracionSegundos", duracionSegundos);
         editor.apply();
 
-        Toast.makeText(
-                this,
-                R.string.personalizacion_guardada,
-                Toast.LENGTH_SHORT
-        ).show();
+        Toast.makeText(this, R.string.personalizacion_guardada, Toast.LENGTH_SHORT).show();
 
         finish();
     }
 
     private void cargarPreferencias() {
 
-        String nombreGuardado =
-                preferencias.getString("nombreUsuario", "");
-
-        int duracionGuardada =
-                preferencias.getInt("duracionEnfoque", 25);
+        String nombreGuardado = preferencias.getString("nombreUsuario", "");
+        int duracionSegundos = preferencias.getInt("duracionSegundos", 25 * 60);
 
         etNombreUsuario.setText(nombreGuardado);
 
-        if (duracionGuardada == 15) {
+        if (duracionSegundos == 15) {
             spDuracion.setSelection(0);
-
-        } else if (duracionGuardada == 25) {
+        } else if (duracionSegundos == 15 * 60) {
             spDuracion.setSelection(1);
-
-        } else if (duracionGuardada == 45) {
+        } else if (duracionSegundos == 25 * 60) {
             spDuracion.setSelection(2);
-
-        } else {
+        } else if (duracionSegundos == 45 * 60) {
             spDuracion.setSelection(3);
+        } else {
+            spDuracion.setSelection(4);
         }
     }
 }

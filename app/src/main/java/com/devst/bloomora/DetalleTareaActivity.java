@@ -7,6 +7,8 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.widget.Toast;
+
 public class DetalleTareaActivity extends AppCompatActivity {
 
     private TextView tvDetalleAsignatura;
@@ -28,6 +30,12 @@ public class DetalleTareaActivity extends AppCompatActivity {
         String asignatura = getIntent().getStringExtra("asignatura");
         String tarea = getIntent().getStringExtra("tarea");
         String estado = getIntent().getStringExtra("estado");
+
+        if (asignatura == null || tarea == null || estado == null) {
+            Toast.makeText(this, R.string.error_datos_tarea, Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
         tvDetalleAsignatura.setText(asignatura);
         tvDetalleTarea.setText(tarea);

@@ -59,7 +59,7 @@
                 android:textSize="@dimen/texto_normal" />
 
             <TextView
-                android:id="@+id/tvEstadoTarea"
+                android:id="@+id/tvEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaciado_pequeno"
@@ -212,6 +212,15 @@
             android:textColor="@color/verde_oscuro"
             android:textStyle="bold"
             />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaciado_medio"
+            android:background="@drawable/bg_boton_secundario"
+            android:text="@string/volver"
+            android:textColor="@color/verde_oscuro"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

@@ -65,7 +65,8 @@ public class TemporizadorService extends Service {
         sesionActiva = true;
 
         int duracion = intent != null ? intent.getIntExtra("duracion", 25) : 25;
-        long segundosTotales = duracion * 60L;
+
+        long segundosTotales = intent != null ? intent.getIntExtra("duracionSegundos", 25 * 60) : 25 * 60;
 
         Notification notificacion = crearNotificacion(segundosTotales);
 
