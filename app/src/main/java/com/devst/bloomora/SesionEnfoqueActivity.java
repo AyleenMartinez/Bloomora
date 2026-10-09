@@ -42,6 +42,7 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
     private Button btnBluetooth;
     private Button btnAgendarSesion;
     private Button btnIniciarSesion;
+    private Button btnVerDetalle;
 
     private Uri fotoUri;
 
@@ -113,6 +114,8 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         btnBluetooth = findViewById(R.id.btnBluetooth);
         btnAgendarSesion = findViewById(R.id.btnAgendarSesion);
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
+        btnVerDetalle = findViewById(R.id.btnVerDetalle);
+
 
         SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
 
@@ -217,6 +220,18 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
 
                 iniciarTemporizador();
             }
+        });
+
+        // Intent explícito #1: Detalle de tarea
+        btnVerDetalle.setOnClickListener(view -> {
+
+            Intent irADetalleTarea = new Intent(SesionEnfoqueActivity.this, DetalleTareaActivity.class);
+
+            irADetalleTarea.putExtra("asignatura", "Programación Android");
+            irADetalleTarea.putExtra("tarea", "Prototipo 2");
+            irADetalleTarea.putExtra("estado", "Creciendo");
+
+            startActivity(irADetalleTarea);
         });
 
     }

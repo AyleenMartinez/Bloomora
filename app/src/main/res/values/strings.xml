@@ -107,8 +107,6 @@
     <string name="descripcion_evento_calendario">Tiempo reservado para una sesión de concentración.</string>
 
 
-
-
     <string name="permiso_camara_denegado">Necesitas permitir el acceso a la cámara para registrar evidencia.</string>
     <string name="explicacion_permiso_camara">Bloomora necesita acceso a la cámara para registrar tu evidencia de estudio.</string>
 
@@ -129,5 +127,12 @@
     <string name="mensaje_detener_sesion">¿Estás segura de que quieres detener tu sesión de enfoque?</string>
     <string name="continuar_sesion">CONTINUAR</string>
     <string name="confirmar_detener">DETENER</string>
+
+    <!-- DETALLE DE TAREA -->
+    <string name="titulo_detalle_tarea">Detalle de tu semilla</string>
+    <string name="detalle_asignatura">Asignatura</string>
+    <string name="detalle_tarea">Tarea</string>
+    <string name="detalle_estado">Estado</string>
+    <string name="volver">VOLVER</string>
 
 </resources>
