@@ -123,7 +123,7 @@ Las tareas se almacenan localmente utilizando `SharedPreferences` y una estructu
 
 # 🔗 Intents implementados
 
-La evaluación requiere **5 Intents implícitos y 3 Intents explícitos**.
+Bloomora implementa **5 Intents implícitos y 3 Intents explícitos** como parte de su navegación e integración con Android.
 
 ## 🟠 5 Intents implícitos
 
@@ -360,15 +360,9 @@ Esto permite conservar el estado de la aplicación entre ejecuciones.
 
 ---
 
-# 📸 Capturas
+# 📸 Capturas de la aplicación
 
-Las capturas utilizadas en la documentación se almacenan en:
-
-```text
-capturas/
-```
-
-Ejemplos recomendados:
+A continuación se presentan algunas de las principales vistas de Bloomora.
 
 <p align="center">
   <img src="capturas/inicio.jpeg" width="230">
@@ -377,12 +371,18 @@ Ejemplos recomendados:
 </p>
 
 <p align="center">
+  <b>Inicio · Personalización · Mis tareas</b>
+</p>
+
+<p align="center">
   <img src="capturas/enfoque.jpeg" width="230">
   <img src="capturas/detalle_tarea.jpeg" width="230">
   <img src="capturas/mi_jardin.jpeg" width="230">
 </p>
 
-También pueden incluirse capturas del calendario, cámara, Maps o notificación del temporizador para demostrar los Intents y el funcionamiento en segundo plano.
+<p align="center">
+  <b>Sesión de enfoque · Detalle de tarea · Mi jardín</b>
+</p>
 
 ---
 
@@ -401,89 +401,26 @@ También pueden incluirse capturas del calendario, cámara, Maps o notificación
 
 ---
 
-# 📦 Generar APK
+# 📦 APK
 
-Para generar la APK de depuración:
+La aplicación fue compilada en formato APK de depuración.
 
-### Android Studio
+- **Archivo:** `Bloomora-debug.apk`
+- **Versión:** 1.0
+- **Tipo:** Debug APK
 
-```text
-Build
-→ Build Bundle(s) / APK(s)
-→ Build APK(s)
-```
-
-Dependiendo de la versión de Android Studio también puede aparecer como:
-
-```text
-Build
-→ Generate App Bundles or APKs
-→ Generate APKs
-```
-
-La APK se genera normalmente en:
-
-```text
-app/build/outputs/apk/debug/app-debug.apk
-```
-
-Para la entrega se recomienda copiarla y renombrarla como:
-
-```text
-Bloomora-debug.apk
-```
-
-También puede generarse desde la terminal:
-
-```bash
-./gradlew assembleDebug
-```
-
-En Windows:
-
-```powershell
-.\gradlew assembleDebug
-```
+La APK se encuentra disponible en la sección **Releases** del repositorio.
 
 ---
 
-# 📥 GitHub Releases
+## 🌿 Git y organización del proyecto
 
-La APK puede publicarse como archivo adjunto en **GitHub Releases**.
-
-Nombre recomendado:
-
-```text
-Bloomora-debug.apk
-```
-
-Versión sugerida:
-
-```text
-v1.0
-```
-
-De esta forma el repositorio mantiene separado el código fuente de la APK compilada.
-
----
-
-# 🌿 Git y organización del proyecto
-
-Rama principal:
-
-```text
-main
-```
-
-Rama de desarrollo:
-
-```text
-feature/intents
-```
+- **Rama principal:** `main`
+- **Rama de desarrollo:** `feature/intents`
 
 Durante el desarrollo se utilizaron commits descriptivos para agrupar cambios funcionales relacionados.
 
-Al finalizar el proyecto, `feature/intents` puede integrarse en `main` mediante un Pull Request.
+Las funcionalidades fueron desarrolladas y probadas en `feature/intents`, y la versión final fue integrada a `main` mediante Pull Request.
 
 ---
 
