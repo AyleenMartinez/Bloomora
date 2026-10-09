@@ -122,4 +122,12 @@
 
     <string name="temporizador_finalizado">00:00</string>
 
+    <string name="detener_sesion">DETENER SESIÓN</string>
+    <string name="sesion_detenida">Sesión detenida.</string>
+
+    <string name="titulo_detener_sesion">¿Detener sesión?</string>
+    <string name="mensaje_detener_sesion">¿Estás segura de que quieres detener tu sesión de enfoque?</string>
+    <string name="continuar_sesion">CONTINUAR</string>
+    <string name="confirmar_detener">DETENER</string>
+
 </resources>

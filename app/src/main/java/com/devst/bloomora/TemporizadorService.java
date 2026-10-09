@@ -17,6 +17,13 @@ public class TemporizadorService extends Service {
 
     public static final String ACCION_ACTUALIZAR = "com.devst.bloomora.ACTUALIZAR_TEMPORIZADOR";
     public static final String ACCION_COMPLETADA = "com.devst.bloomora.SESION_COMPLETADA";
+    public static final String ACCION_DETENER = "com.devst.bloomora.DETENER_TEMPORIZADOR";
+
+    private static boolean sesionActiva = false;
+
+    public static boolean estaActiva() {
+        return sesionActiva;
+    }
     public static final String EXTRA_SEGUNDOS = "segundosRestantes";
 
     private static final String ID_CANAL = "canal_enfoque";
@@ -37,6 +44,25 @@ public class TemporizadorService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent != null && ACCION_DETENER.equals(intent.getAction())) {
+
+            sesionActiva = false;
+
+            if (hiloTemporizador != null) {
+                hiloTemporizador.interrupt();
+            }
+
+            stopForeground(STOP_FOREGROUND_REMOVE);
+            stopSelf();
+
+            return START_NOT_STICKY;
+        }
+
+        if (sesionActiva) {
+            return START_NOT_STICKY;
+        }
+
+        sesionActiva = true;
 
         int duracion = intent != null ? intent.getIntExtra("duracion", 25) : 25;
         long segundosTotales = duracion * 60L;
@@ -79,6 +105,7 @@ public class TemporizadorService extends Service {
             }
 
             if (!Thread.currentThread().isInterrupted()) {
+                sesionActiva = false;
                 enviarSesionCompletada();
                 stopForeground(STOP_FOREGROUND_REMOVE);
                 stopSelf();
@@ -142,6 +169,8 @@ public class TemporizadorService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
+        sesionActiva = false;
 
         if (hiloTemporizador != null) {
             hiloTemporizador.interrupt();

@@ -29,6 +29,8 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Build;
 
+import androidx.appcompat.app.AlertDialog;
+
 
 
 public class SesionEnfoqueActivity extends AppCompatActivity {
@@ -83,6 +85,7 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             tvTemporizador.setText(R.string.temporizador_finalizado);
+            btnIniciarSesion.setText(R.string.iniciar_sesion);
             Toast.makeText(SesionEnfoqueActivity.this, R.string.sesion_finalizada, Toast.LENGTH_SHORT).show();
         }
     };
@@ -201,12 +204,17 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
 
         btnIniciarSesion.setOnClickListener(view -> {
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            if (TemporizadorService.estaActiva()) {
+
+                confirmarDetenerSesion();
+
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
                     ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
 
                 permisoNotificaciones.launch(Manifest.permission.POST_NOTIFICATIONS);
 
             } else {
+
                 iniciarTemporizador();
             }
         });
@@ -252,6 +260,45 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         servicioTemporizador.putExtra("duracion", duracion);
 
         ContextCompat.startForegroundService(this, servicioTemporizador);
+
+        btnIniciarSesion.setText(R.string.detener_sesion);
+    }
+
+    private void detenerTemporizador() {
+
+        Intent detenerServicio = new Intent(this, TemporizadorService.class);
+        detenerServicio.setAction(TemporizadorService.ACCION_DETENER);
+        startService(detenerServicio);
+
+        SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
+        int duracion = preferencias.getInt("duracionEnfoque", 25);
+
+        tvTemporizador.setText(getString(R.string.formato_temporizador, duracion));
+        btnIniciarSesion.setText(R.string.iniciar_sesion);
+
+        Toast.makeText(this, R.string.sesion_detenida, Toast.LENGTH_SHORT).show();
+    }
+
+    private void confirmarDetenerSesion() {
+
+        AlertDialog dialogo = new AlertDialog.Builder(this)
+                .setTitle(R.string.titulo_detener_sesion)
+                .setMessage(R.string.mensaje_detener_sesion)
+                .setNegativeButton(R.string.continuar_sesion, null)
+                .setPositiveButton(R.string.confirmar_detener, (dialog, which) -> detenerTemporizador())
+                .create();
+
+        dialogo.setOnShowListener(dialog -> {
+
+            if (dialogo.getWindow() != null) {
+                dialogo.getWindow().setBackgroundDrawableResource(R.drawable.bg_tarjeta);
+            }
+
+            dialogo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getColor(R.color.verde_oscuro));
+            dialogo.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getColor(R.color.verde_oscuro));
+        });
+
+        dialogo.show();
     }
 
     @Override
@@ -263,6 +310,12 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
 
         ContextCompat.registerReceiver(this, receptorTemporizador, filtroTemporizador, ContextCompat.RECEIVER_NOT_EXPORTED);
         ContextCompat.registerReceiver(this, receptorSesionCompletada, filtroCompletada, ContextCompat.RECEIVER_NOT_EXPORTED);
+
+        if (TemporizadorService.estaActiva()) {
+            btnIniciarSesion.setText(R.string.detener_sesion);
+        } else {
+            btnIniciarSesion.setText(R.string.iniciar_sesion);
+        }
     }
 
     @Override
