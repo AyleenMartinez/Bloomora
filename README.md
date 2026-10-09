@@ -371,15 +371,15 @@ capturas/
 Ejemplos recomendados:
 
 <p align="center">
-  <img src="capturas/inicio.jpg" width="230">
-  <img src="capturas/personalizacion.jpg" width="230">
-  <img src="capturas/mis_tareas.jpg" width="230">
+  <img src="capturas/inicio.jpeg" width="230">
+  <img src="capturas/personalizacion.jpeg" width="230">
+  <img src="capturas/mis_tareas.jpeg" width="230">
 </p>
 
 <p align="center">
-  <img src="capturas/enfoque.jpg" width="230">
-  <img src="capturas/detalle_tarea.jpg" width="230">
-  <img src="capturas/mi_jardin.jpg" width="230">
+  <img src="capturas/enfoque.jpeg" width="230">
+  <img src="capturas/detalle_tarea.jpeg" width="230">
+  <img src="capturas/mi_jardin.jpeg" width="230">
 </p>
 
 También pueden incluirse capturas del calendario, cámara, Maps o notificación del temporizador para demostrar los Intents y el funcionamiento en segundo plano.
