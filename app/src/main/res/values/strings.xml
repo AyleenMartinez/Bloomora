@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Aplicación -->
+
+    <!-- ================================================= -->
+    <!-- GENERAL -->
+    <!-- ================================================= -->
+
     <string name="app_name">Bloomora</string>
     <string name="eslogan_app">Cultiva tu concentración</string>
     <string name="descripcion_logo">Logo de Bloomora</string>
+    <string name="volver">VOLVER</string>
 
-    <!-- MAIN -->
 
-    <string name="saludo_usuario">Hola, Lala</string>
+    <!-- ================================================= -->
+    <!-- MAIN ACTIVITY -->
+    <!-- ================================================= -->
+
+    <string name="saludo_generico">Hola</string>
+    <string name="saludo_personalizado">Hola, %1$s</string>
+
     <string name="mensaje_inicio">Qué bueno verte por aquí. Hoy puedes avanzar a tu propio ritmo.</string>
 
-    <string name="descripcion_mascota">Mascota de Bloomora</string>
-    <string name="mensaje_mascota">No tienes que hacerlo todo hoy. Un pequeño avance también cuenta.</string>
-
-    <string name="resumen_dia">Tu día</string>
-    <string name="resumen_ejemplo">1 tarea pendiente · 25 min estudiados</string>
-
-    <string name="que_hacer">¿Qué quieres hacer?</string>
-
+    <string name="mi_jardin">Mi jardín</string>
     <string name="enfocarme">Enfocarme</string>
-    <string name="por_hacer">Por hacer</string>
-    <string name="calendario">Calendario</string>
-    <string name="personalizar">Personalizar</string>
 
-    <!-- Personalización -->
+
+    <!-- ================================================= -->
+    <!-- PERSONALIZACIÓN -->
+    <!-- ================================================= -->
+
     <string name="titulo_personalizacion">Haz Bloomora tuya</string>
     <string name="subtitulo_personalizacion">Pequeños detalles para acompañarte mejor.</string>
 
@@ -32,67 +36,140 @@
 
     <string name="tiempo_enfoque">¿Cuánto quieres que dure tu sesión?</string>
 
-    <string name="guardar_personalizacion">Guardar cambios</string>
-    <string name="volver_inicio">Volver</string>
-
-    <!-- Duración -->
     <string-array name="duraciones_enfoque">
+        <item>15 segundos (DEMO)</item>
         <item>15 minutos</item>
         <item>25 minutos</item>
         <item>45 minutos</item>
         <item>60 minutos</item>
     </string-array>
 
-    <!-- SESION ENFOQUE  -->
+    <string name="guardar_personalizacion">Guardar cambios</string>
 
-    <!-- Inicio -->
-    <string name="mi_jardin">Mi jardín</string>
-    <string name="tareas_activas">Tareas activas</string>
+    <string name="personalizacion_guardada">Cambios guardados</string>
+    <string name="error_nombre_vacio">Escribe un nombre o apodo</string>
 
-    <!-- Tarea de ejemplo -->
-    <string name="asignatura_android">Programación Android</string>
-    <string name="prototipo_dos">Prototipo 2</string>
-    <string name="ver_detalle">Ver detalle</string>
 
-    <!-- Estados de tareas -->
-    <string name="estado_semilla">Semilla</string>
-    <string name="estado_creciendo">Creciendo</string>
-    <string name="estado_florecida">Florecida</string>
+    <!-- ================================================= -->
+    <!-- POR HACER -->
+    <!-- ================================================= -->
 
-    <!-- Resumen del jardín -->
-    <string name="semillas">Semillas</string>
-    <string name="creciendo">Creciendo</string>
-    <string name="florecidas">Florecidas</string>
+    <string name="titulo_por_hacer">Tu próxima semilla</string>
+    <string name="subtitulo_por_hacer">Guarda una tarea para enfocarte en ella.</string>
 
-    <!-- Sesión de enfoque -->
+    <string name="asignatura_tarea">Asignatura</string>
+    <string name="pista_asignatura">Ej: Programación Android</string>
+
+    <string name="nombre_tarea">Tarea</string>
+    <string name="pista_tarea">Ej: Prototipo 2</string>
+
+    <string name="estado_tarea">Estado</string>
+
+
+    <string name="guardar_tarea">GUARDAR TAREA</string>
+    <string name="tarea_guardada">Tarea guardada correctamente.</string>
+
+    <string name="error_asignatura_vacia">Ingresa una asignatura.</string>
+    <string name="error_tarea_vacia">Ingresa una tarea.</string>
+
+
+    <!-- ================================================= -->
+    <!-- SESIÓN DE ENFOQUE -->
+    <!-- ================================================= -->
+
+    <string name="ver_detalle">VER DETALLE</string>
+
     <string name="sesion_enfoque">Sesión de enfoque</string>
-    <string name="duracion_enfoque">25 min</string>
-    <string name="iniciar_sesion">Iniciar sesión</string>
-    <string name="finalizar_sesion">Finalizar sesión</string>
-    <string name="sesion_en_curso">Sesión en curso</string>
-    <string name="sesion_completada">¡Sesión completada!</string>
-    <string name="jardin_creciendo">Tu jardín está creciendo</string>
-    <string name="temporizador_inicial">25:00</string>
+    <string name="iniciar_sesion">INICIAR SESIÓN</string>
+    <string name="detener_sesion">Detener sesión</string>
 
-    <!-- Preparación -->
+    <string name="temporizador_vacio">00:00</string>
+    <string name="temporizador_finalizado">00:00</string>
+    <string name="formato_temporizador_segundos">%1$02d:%2$02d</string>
+
     <string name="prepara_sesion">Prepara tu sesión</string>
 
-    <!-- Intents implícitos -->
     <string name="lugar_estudio">Lugar de estudio</string>
     <string name="material_estudio">Material</string>
     <string name="registrar_evidencia">Evidencia</string>
     <string name="configurar_bluetooth">Bluetooth</string>
-    <string name="agendar_sesion">Agendar</string>
+    <string name="agendar_sesion">Agendar enfoque</string>
 
-    <!-- Tareas -->
-    <string name="nueva_tarea">Nueva tarea</string>
-    <string name="nombre_tarea">Nombre de la tarea</string>
-    <string name="asignatura">Asignatura</string>
-    <string name="fecha">Fecha</string>
-    <string name="estado">Estado</string>
 
-    <!-- Mensajes -->
-    <string name="error_sin_aplicacion">No hay una aplicación compatible.</string>
-    <string name="error_datos_vacios">Completa los datos solicitados.</string>
-    <string name="evidencia_registrada">Evidencia registrada correctamente.</string>
+
+    <!-- ================================================= -->
+    <!-- INTENTS IMPLÍCITOS Y VALIDACIONES -->
+    <!-- ================================================= -->
+
+    <string name="error_sin_mapa">No se encontró una aplicación de mapas.</string>
+    <string name="error_sin_navegador">No se encontró un navegador disponible.</string>
+    <string name="error_sin_camara">No se encontró una aplicación de cámara.</string>
+    <string name="error_sin_bluetooth">No se pudo abrir la configuración de Bluetooth.</string>
+    <string name="error_sin_calendario">No se encontró una aplicación de calendario.</string>
+
+    <string name="foto_guardada">Evidencia guardada correctamente.</string>
+    <string name="error_guardar_foto">No se pudo preparar el archivo para la fotografía.</string>
+
+    <string name="permiso_camara_denegado">Necesitas permitir el acceso a la cámara para registrar evidencia.</string>
+    <string name="explicacion_permiso_camara">Bloomora necesita acceso a la cámara para registrar tu evidencia de estudio.</string>
+
+    <string name="titulo_evento_calendario">Sesión de enfoque Bloomora</string>
+    <string name="descripcion_evento_calendario">Tiempo reservado para una sesión de concentración.</string>
+
+
+    <!-- ================================================= -->
+    <!-- TEMPORIZADOR SERVICE -->
+    <!-- ================================================= -->
+
+    <string name="canal_enfoque">Sesiones de enfoque</string>
+    <string name="notificacion_enfoque_titulo">Sesión de enfoque en curso</string>
+    <string name="notificacion_enfoque_tiempo">Tiempo restante: %1$s</string>
+
+    <string name="sesion_finalizada">¡Sesión completada!</string>
+    <string name="sesion_detenida">Sesión detenida.</string>
+
+    <string name="permiso_notificacion_denegado">Activa las notificaciones para ver el temporizador mientras estudias.</string>
+
+    <string name="titulo_detener_sesion">¿Detener sesión?</string>
+    <string name="mensaje_detener_sesion">¿Estás segura de que quieres detener tu sesión de enfoque?</string>
+    <string name="continuar_sesion">CONTINUAR</string>
+    <string name="confirmar_detener">DETENER</string>
+
+
+    <!-- ================================================= -->
+    <!-- DETALLE DE TAREA -->
+    <!-- ================================================= -->
+
+    <string name="titulo_detalle_tarea">Detalle de tu semilla</string>
+    <string name="detalle_asignatura">Asignatura</string>
+    <string name="detalle_tarea">Tarea</string>
+    <string name="detalle_estado">Estado</string>
+
+    <string name="error_datos_tarea">No se pudieron cargar los datos de la tarea.</string>
+
+    <string name="mis_semillas">Mis semillas</string>
+    <string name="sin_tareas">Aún no tienes tareas guardadas.</string>
+    <string name="usar_para_enfocarme">USAR PARA ENFOCARME</string>
+    <string name="tarea_activa">TAREA ACTIVA</string>
+    <string name="tarea_seleccionada">Tarea seleccionada para tu próxima sesión.</string>
+
+    <string name="sin_tarea_activa">Sin tarea activa</string>
+    <string name="selecciona_tarea">Selecciona una tarea en Mis tareas</string>
+    <string name="sin_seleccionar">Sin seleccionar</string>
+
+    <string name="titulo_mi_jardin">Mi jardín</string>
+    <string name="subtitulo_mi_jardin">Aquí florecen tus tareas completadas.</string>
+    <string name="sin_flores">Aún no tienes tareas florecidas.</string>
+
+    <string name="explorar">Explorar</string>
+
+
+    <string name="ajustes">Personalizar Bloomora</string>
+    <string name="mis_tareas">Mis tareas</string>
+    <string name="agenda_enfoques">Agenda</string>
+    <string name="frase_bloomora">No tienes que hacerlo todo hoy. Un pequeño avance también cuenta.</string>
+
+    <string name="mascota">🌱</string>
+
+
 </resources>

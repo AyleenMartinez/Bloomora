@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    ARCHIVO: activity_personalizacion.xml
-    FUNCIÓN: Permite personalizar la experiencia de Bloomora.
-    CONTIENE: Nombre del usuario y duración de la sesión de enfoque.
-    ACTIVITY: PersonalizacionActivity.java
--->
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -44,22 +38,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/espaciado_medio"
-                android:text="@string/titulo_personalizacion"
+                android:text="@string/titulo_por_hacer"
                 android:textColor="@color/verde_oscuro"
-                android:textSize="@dimen/texto_titulo"
+                android:textSize="@dimen/texto_encabezado"
                 android:textStyle="bold" />
 
             <!-- Subtítulo -->
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/espaciado_pequeno"
                 android:gravity="center"
-                android:text="@string/subtitulo_personalizacion"
-                android:textColor="@color/texto_secundario"
-                android:textSize="@dimen/texto_normal" />
+                android:text="@string/subtitulo_por_hacer"
+                android:textColor="@color/texto_secundario" />
 
-            <!-- Datos de personalización -->
+            <!-- Formulario -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,59 +65,85 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/como_llamarte"
+                    android:text="@string/asignatura_tarea"
                     android:textColor="@color/texto_principal"
-                    android:textSize="@dimen/texto_subtitulo"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etNombreUsuario"
+                    android:id="@+id/etAsignatura"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/espaciado_medio"
                     android:backgroundTint="@color/verde_principal"
-                    android:hint="@string/pista_nombre"
-                    android:inputType="textPersonName"
-                    android:maxLines="1"
+                    android:hint="@string/pista_asignatura"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/texto_principal"
                     android:textColorHint="@color/texto_secundario" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/espaciado_grande"
-                    android:text="@string/tiempo_enfoque"
+                    android:layout_marginTop="@dimen/espaciado_medio"
+                    android:text="@string/nombre_tarea"
                     android:textColor="@color/texto_principal"
-                    android:textSize="@dimen/texto_subtitulo"
                     android:textStyle="bold" />
 
-                <Spinner
-                    android:id="@+id/spDuracion"
+                <EditText
+                    android:id="@+id/etTarea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/espaciado_medio"
-                    android:entries="@array/duraciones_enfoque" />
+                    android:backgroundTint="@color/verde_principal"
+                    android:hint="@string/pista_tarea"
+                    android:inputType="textCapSentences"
+                    android:textColor="@color/texto_principal"
+                    android:textColorHint="@color/texto_secundario" />
 
             </LinearLayout>
 
             <!-- Guardar -->
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnGuardarPersonalizacion"
+                android:id="@+id/btnGuardarTarea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaciado_grande"
                 android:background="@drawable/bg_boton_principal"
-                android:text="@string/guardar_personalizacion"
+                android:text="@string/guardar_tarea"
                 android:textColor="@color/blanco"
                 android:textStyle="bold"
                 app:backgroundTint="@null" />
+
+            <!-- Mis semillas -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_grande"
+                android:text="@string/mis_semillas"
+                android:textColor="@color/texto_principal"
+                android:textSize="@dimen/texto_subtitulo"
+                android:textStyle="bold" />
+
+            <!-- Sin tareas -->
+            <TextView
+                android:id="@+id/tvSinTareas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaciado_medio"
+                android:gravity="center"
+                android:text="@string/sin_tareas"
+                android:textColor="@color/texto_secundario" />
+
+            <!-- Lista de tareas -->
+            <LinearLayout
+                android:id="@+id/contenedorTareas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
             <!-- Volver -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnVolver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaciado_pequeno"
+                android:layout_marginTop="@dimen/espaciado_medio"
                 android:background="@drawable/bg_boton_secundario"
                 android:text="@string/volver"
                 android:textColor="@color/verde_oscuro"

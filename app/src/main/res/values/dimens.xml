@@ -30,4 +30,8 @@
     <dimen name="relleno_tarjeta">16dp</dimen>
     <dimen name="margen_pantalla">20dp</dimen>
 
+    <dimen name="tamano_icono_ajustes">48dp</dimen>
+
+    <dimen name="margen_superior_logo">24dp</dimen>
+
 </resources>

@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +20,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloomora">
+        <activity
+            android:name=".MiJardinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PorHacerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetalleTareaActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".TemporizadorService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Temporizador visible para una sesión de enfoque iniciada por el usuario" />
+        </service>
+
         <activity
             android:name=".PersonalizacionActivity"
             android:exported="false" />

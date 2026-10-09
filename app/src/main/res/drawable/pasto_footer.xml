@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="70dp"
+    android:viewportWidth="360"
+    android:viewportHeight="70">
+
+    <!-- Colina del fondo -->
+    <path
+        android:fillColor="#E7F0E1"
+        android:pathData="
+        M0,48
+        C45,35 85,43 125,38
+        C170,32 215,40 255,35
+        C300,30 330,36 360,32
+        L360,70
+        L0,70
+        Z" />
+
+    <!-- Colina del frente -->
+    <path
+        android:fillColor="#D8E6D0"
+        android:pathData="
+        M0,55
+        C35,45 70,50 105,46
+        C145,42 180,49 220,44
+        C265,39 315,46 360,42
+        L360,70
+        L0,70
+        Z" />
+
+    <!-- Pasto izquierdo -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#9DBA91"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="
+        M28,53 L23,42
+        M28,53 L30,39
+        M28,53 L36,44
+
+        M55,49 L50,38
+        M55,49 L57,35
+        M55,49 L63,41
+
+        M88,47 L84,35
+        M88,47 L91,32
+        M88,47 L96,38
+
+        M122,45 L118,33
+        M122,45 L124,29
+        M122,45 L130,36" />
+
+    <!-- Pasto central -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#95B589"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="
+        M158,47 L153,34
+        M158,47 L161,30
+        M158,47 L167,37
+
+        M198,44 L194,31
+        M198,44 L200,28
+        M198,44 L207,35
+
+        M235,43 L230,31
+        M235,43 L238,27
+        M235,43 L244,34" />
+
+    <!-- Pasto derecho -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#9DBA91"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="
+        M274,44 L269,32
+        M274,44 L276,29
+        M274,44 L283,35
+
+        M310,45 L306,34
+        M310,45 L313,31
+        M310,45 L319,37
+
+        M340,46 L336,35
+        M340,46 L342,33
+        M340,46 L348,39" />
+
+</vector>

@@ -12,6 +12,10 @@
         <item name="android:windowBackground">@color/fondo_jardin</item>
         <item name="android:navigationBarColor">@color/fondo_jardin</item>
 
+        <item name="android:textColorPrimary">@color/texto_principal</item>
+        <item name="android:textColorSecondary">@color/texto_secundario</item>
+        <item name="android:textColorHint">@color/texto_secundario</item>
+
     </style>
 
 </resources>
