@@ -1,22 +1,27 @@
 package com.devst.bloomora;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class PorHacerActivity extends AppCompatActivity {
 
     private EditText etAsignatura;
     private EditText etTarea;
-    private Spinner spEstadoTarea;
     private Button btnGuardarTarea;
     private Button btnVolver;
-    private SharedPreferences tareas;
+    private LinearLayout contenedorTareas;
+    private TextView tvSinTareas;
+
+    private GestorTareas gestorTareas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,59 +30,97 @@ public class PorHacerActivity extends AppCompatActivity {
 
         etAsignatura = findViewById(R.id.etAsignatura);
         etTarea = findViewById(R.id.etTarea);
-        spEstadoTarea = findViewById(R.id.spEstadoTarea);
         btnGuardarTarea = findViewById(R.id.btnGuardarTarea);
         btnVolver = findViewById(R.id.btnVolver);
+        contenedorTareas = findViewById(R.id.contenedorTareas);
+        tvSinTareas = findViewById(R.id.tvSinTareas);
 
-        tareas = getSharedPreferences("tareasBloomora", MODE_PRIVATE);
+        gestorTareas = new GestorTareas(this);
 
-        cargarTarea();
+        mostrarTareas();
 
-        btnGuardarTarea.setOnClickListener(view -> guardarTarea());
+        btnGuardarTarea.setOnClickListener(view -> agregarTarea());
         btnVolver.setOnClickListener(view -> finish());
     }
 
-    private void guardarTarea() {
+    private void agregarTarea() {
 
         String asignatura = etAsignatura.getText().toString().trim();
-        String tarea = etTarea.getText().toString().trim();
-        String estado = spEstadoTarea.getSelectedItem().toString();
+        String nombre = etTarea.getText().toString().trim();
 
         if (asignatura.isEmpty()) {
             etAsignatura.setError(getString(R.string.error_asignatura_vacia));
             return;
         }
 
-        if (tarea.isEmpty()) {
+        if (nombre.isEmpty()) {
             etTarea.setError(getString(R.string.error_tarea_vacia));
             return;
         }
 
-        SharedPreferences.Editor editor = tareas.edit();
-        editor.putString("asignaturaTarea", asignatura);
-        editor.putString("nombreTarea", tarea);
-        editor.putString("estadoTarea", estado);
-        editor.apply();
+        Tarea nuevaTarea = new Tarea(asignatura, nombre, "Semilla");
+        gestorTareas.agregarTarea(nuevaTarea);
+
+        etAsignatura.setText("");
+        etTarea.setText("");
 
         Toast.makeText(this, R.string.tarea_guardada, Toast.LENGTH_SHORT).show();
-        finish();
+
+        mostrarTareas();
     }
 
-    private void cargarTarea() {
+    private void mostrarTareas() {
 
-        String asignatura = tareas.getString("asignaturaTarea", "");
-        String tarea = tareas.getString("nombreTarea", "");
-        String estado = tareas.getString("estadoTarea", "Semilla");
+        ArrayList<Tarea> tareas = gestorTareas.cargarTareas();
+        int indiceActivo = gestorTareas.obtenerIndiceTareaActiva();
 
-        etAsignatura.setText(asignatura);
-        etTarea.setText(tarea);
+        contenedorTareas.removeAllViews();
 
-        if (estado.equals("Creciendo")) {
-            spEstadoTarea.setSelection(1);
-        } else if (estado.equals("Florecida")) {
-            spEstadoTarea.setSelection(2);
+        boolean hayPendientes = false;
+
+        for (int i = 0; i < tareas.size(); i++) {
+
+            Tarea tarea = tareas.get(i);
+
+            if (tarea.getEstado().equals("Florecida")) {
+                continue;
+            }
+
+            hayPendientes = true;
+
+            View item = getLayoutInflater().inflate(R.layout.item_tarea, contenedorTareas, false);
+
+            TextView tvNombre = item.findViewById(R.id.tvItemNombreTarea);
+            TextView tvAsignatura = item.findViewById(R.id.tvItemAsignatura);
+            TextView tvEstado = item.findViewById(R.id.tvItemEstado);
+            Button btnUsar = item.findViewById(R.id.btnUsarTarea);
+
+            tvNombre.setText(tarea.getNombre());
+            tvAsignatura.setText(tarea.getAsignatura());
+            tvEstado.setText(tarea.getEstado());
+
+            int posicion = i;
+
+            if (posicion == indiceActivo) {
+                btnUsar.setText(R.string.tarea_activa);
+                btnUsar.setEnabled(false);
+            } else {
+                btnUsar.setText(R.string.usar_para_enfocarme);
+
+                btnUsar.setOnClickListener(view -> {
+                    gestorTareas.guardarTareaActiva(posicion);
+                    Toast.makeText(this, R.string.tarea_seleccionada, Toast.LENGTH_SHORT).show();
+                    mostrarTareas();
+                });
+            }
+
+            contenedorTareas.addView(item);
+        }
+
+        if (hayPendientes) {
+            tvSinTareas.setVisibility(View.GONE);
         } else {
-            spEstadoTarea.setSelection(0);
+            tvSinTareas.setVisibility(View.VISIBLE);
         }
     }
 }

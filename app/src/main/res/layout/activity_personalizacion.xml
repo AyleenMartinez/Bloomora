@@ -116,7 +116,7 @@
             android:layout_marginTop="@dimen/espaciado_pequeno"
             android:layout_marginBottom="@dimen/espaciado_grande"
             android:background="@drawable/bg_boton_secundario"
-            android:text="@string/volver_inicio"
+            android:text="@string/volver"
             android:textColor="@color/verde_oscuro"
             android:textStyle="bold"
             app:backgroundTint="@null" />

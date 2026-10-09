@@ -97,14 +97,14 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvResumen"
+            android:id="@+id/tvResumenEstado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/espaciado_pequeno"
             android:background="@drawable/bg_tarjeta"
             android:gravity="center"
             android:padding="@dimen/relleno_tarjeta"
-            android:text="@string/resumen_ejemplo"
+            android:text="@string/resumen_sin_tarea"
             android:textColor="@color/texto_secundario"
             android:textSize="@dimen/texto_normal" />
 

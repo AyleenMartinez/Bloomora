@@ -40,11 +40,11 @@
             android:padding="@dimen/relleno_tarjeta"
             android:layout_marginTop="@dimen/espaciado_medio">
 
+            <!-- Tarea activa -->
             <TextView
                 android:id="@+id/tvAsignatura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/asignatura_android"
                 android:textColor="@color/texto_principal"
                 android:textSize="@dimen/texto_subtitulo"
                 android:textStyle="bold" />
@@ -54,7 +54,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaciado_pequeno"
-                android:text="@string/prototipo_dos"
                 android:textColor="@color/texto_secundario"
                 android:textSize="@dimen/texto_normal" />
 
@@ -63,7 +62,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaciado_pequeno"
-                android:text="@string/estado_creciendo"
                 android:textColor="@color/verde_principal"
                 android:textStyle="bold" />
 
@@ -105,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaciado_medio"
-                android:text="@string/temporizador_inicial"
+                android:text="@string/temporizador_vacio"
                 android:textColor="@color/verde_oscuro"
                 android:textSize="@dimen/texto_encabezado"
                 android:textStyle="bold" />

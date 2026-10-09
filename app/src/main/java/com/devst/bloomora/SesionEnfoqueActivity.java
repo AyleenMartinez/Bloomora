@@ -31,6 +31,8 @@ import android.os.Build;
 
 import androidx.appcompat.app.AlertDialog;
 
+import android.view.View;
+
 
 
 public class SesionEnfoqueActivity extends AppCompatActivity {
@@ -89,9 +91,16 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
     private final BroadcastReceiver receptorSesionCompletada = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+
+            GestorTareas gestorTareas = new GestorTareas(SesionEnfoqueActivity.this);
+            gestorTareas.completarTareaActiva();
+
             tvTemporizador.setText(R.string.temporizador_finalizado);
             btnIniciarSesion.setText(R.string.iniciar_sesion);
+
             Toast.makeText(SesionEnfoqueActivity.this, R.string.sesion_finalizada, Toast.LENGTH_SHORT).show();
+
+            cargarTarea();
         }
     };
 
@@ -252,15 +261,27 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
 
     private void cargarTarea() {
 
-        SharedPreferences tareas = getSharedPreferences("tareasBloomora", MODE_PRIVATE);
+        GestorTareas gestorTareas = new GestorTareas(this);
+        Tarea tareaActiva = gestorTareas.obtenerTareaActiva();
 
-        String asignatura = tareas.getString("asignaturaTarea", "Sin asignatura");
-        String tarea = tareas.getString("nombreTarea", "Aún no tienes una tarea");
-        String estado = tareas.getString("estadoTarea", "Semilla");
+        if (tareaActiva == null) {
 
-        tvAsignatura.setText(asignatura);
-        tvTarea.setText(tarea);
-        tvEstado.setText(estado);
+            tvAsignatura.setText(R.string.sin_tarea_activa);
+            tvTarea.setText(R.string.selecciona_tarea);
+            tvEstado.setText(R.string.sin_seleccionar);
+
+            btnVerDetalle.setVisibility(View.GONE);
+            btnIniciarSesion.setVisibility(View.GONE);
+
+            return;
+        }
+
+        tvAsignatura.setText(tareaActiva.getAsignatura());
+        tvTarea.setText(tareaActiva.getNombre());
+        tvEstado.setText(tareaActiva.getEstado());
+
+        btnVerDetalle.setVisibility(View.VISIBLE);
+        btnIniciarSesion.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -308,6 +329,10 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
         int duracionSegundos = preferencias.getInt("duracionSegundos", 25 * 60);
 
+        GestorTareas gestorTareas = new GestorTareas(this);
+        gestorTareas.marcarTareaActivaCreciendo();
+        cargarTarea();
+
         Intent servicioTemporizador = new Intent(this, TemporizadorService.class);
         servicioTemporizador.putExtra("duracionSegundos", duracionSegundos);
 
@@ -323,9 +348,12 @@ public class SesionEnfoqueActivity extends AppCompatActivity {
         startService(detenerServicio);
 
         SharedPreferences preferencias = getSharedPreferences("preferenciasBloomora", MODE_PRIVATE);
-        int duracion = preferencias.getInt("duracionEnfoque", 25);
+        int duracionSegundos = preferencias.getInt("duracionSegundos", 25 * 60);
 
-        tvTemporizador.setText(getString(R.string.formato_temporizador, duracion));
+        int minutos = duracionSegundos / 60;
+        int segundos = duracionSegundos % 60;
+
+        tvTemporizador.setText(getString(R.string.formato_temporizador_segundos, minutos, segundos));
         btnIniciarSesion.setText(R.string.iniciar_sesion);
 
         Toast.makeText(this, R.string.sesion_detenida, Toast.LENGTH_SHORT).show();

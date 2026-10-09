@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloomora">
         <activity
+            android:name=".MiJardinActivity"
+            android:exported="false" />
+        <activity
             android:name=".PorHacerActivity"
             android:exported="false" />
         <activity
